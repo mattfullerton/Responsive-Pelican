@@ -2,30 +2,53 @@
 {% block content %}
 {{ super() }}
 <ul>
+<li class="posts"><article class="post hentry">
+{% if output_file == "index.html" %}
+	<header>
+		<h2 class="post-title" >
+			Crowdsalad: Solutions for data-driven professionals
+		</h2>
+                <h3>Matthew Fullerton, MEng, MSc</h3>
+	</header>
+	<div class="centered">
+<span class="linkstext">+49 176 5789 6501 | <a href="mailto:matt@crowdsalad.de">Email me</a> | <a href="http://www.linkedin.com/in/mattfullerton">LinkedIn</a> | <a href="http://www.github.com/mattfullerton">GitHub</a> | <a href="https://twitter.com/mattfullerton">Twitter</a> | <a href="cv.html">CV</a> (as <a href="cv.pdf">PDF</a>)
+<br><br>
+Crowdsalad is the trading name of Matt Fullerton, a freelance software developer and data analyst from Munich, Germany. I've been writing serious software since 2004 and have worked on projects in Germany, the USA and the UK. Technologies I'm particularly good with are <strong>Python</strong> for data processing, <strong>Node.js</strong> for API building, <strong>jQuery</strong> and <strong>React</strong> for web projects and <strong>Cordova</strong> for mobile development. I've also worked a lot in the past with <strong>C++</strong> and <strong>Java</strong>.
+<br><br>
+My interests are in crowdsourcing of data, efficient data workflows and pipelines, open-source data platforms and community building as well mobility and travel data.
+<br><br>
+I'm a co-founder of <a href="http://www.codefor.de/muenchen">Code for Munich<a>, <a href="http://about.smartlane.de">Smartlane</a> and <a href="http://www.hawadawa.com">Hawa Dawa</a>.
+</span>
+</div>
+
+	<hr />
+</article></li>
+<h3>Latest Stuff</h3>
+{% endif %}
+
 {% for article in articles_page.object_list %}
 <li class="posts"><article class="post hentry">
 	<header>
-		<h2 class="post-title" >
+		<h4 class="post-title" >
 			<a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a>
-		</h2>
+		</h4>
 		<div class="post-info">
-			<span class="post-lable">Post in</span>
-			<abbr class="date" title="{{ article.date.isoformat() }}"> 
-				<a href="{{ SITEURL }}/{{ article.date|strftime("archive/%Y/%b/index.html") }}">{{ article.locale_date }} </a>
-			</abbr>
+			<span class="post-lable">Post from {{ article.locale_date }}</span>
+			
 			<!-- COMMENTS -->
 		</div>
 	</header>
-	<div class="summary">{{ article.summary }}</div>
-	<footer>
+	<div class="summary">{{ article.summary | striptags | trim }} | <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Read more...">Read more...</a></div> 
+	{#<footer>
 		<span class="post-lable">Category:</span>
 		<abbr class="category">
 			<a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>
 		</abbr>
-	</footer>
+	</footer>#}
 	<hr />
 </article></li>
 {% endfor %}
+
 </ul>
 {% include 'pagination.html' %}
 {% endblock content%}

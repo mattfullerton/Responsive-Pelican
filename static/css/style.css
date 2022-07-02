@@ -3253,3 +3253,33 @@ BDO[DIR="rtl"] {
 }
 
 /*The last 29 days of the month are the hardest."- Nikola Tesla*/
+
+ul.tagcloud {
+  list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-1 {
+    font-size: 150%;
+}
+
+li.tag-2 {
+    font-size: 120%;
+}
+
+li.tag-3 {
+    font-size: 100%;
+}
+li.tag-4 {
+    font-size: 80%;
+}
+
+ul.tagcloud .list-group-item <span>.badge {
+    background-color: grey;
+    color: white;
+}

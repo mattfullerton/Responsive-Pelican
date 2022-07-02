@@ -39,10 +39,7 @@
 <body id="index" class="blog">
 <div id="container" class="hfeed">
     <header id="header" >
-        <div id="logo">
-                <h1><img src="{{ SITEURL }}/theme/image/default-logo.png" width="300" height="100" alt="{{ SITENAME }}" />
-                {{ SITENAME }}</h1>
-        </div> <!-- /#logo-->
+        <a href="/"><img src="{{ SITEURL }}/theme/image/default-logo.png" alt="{{ SITENAME }}" /></a>
         <nav id="menu" class="main-nav"><ul class="menu">
         {% for title, link in MENUITEMS %}
             <li {% if p == page %} class="active"{% endif %}><a href="{{ link }}">{{ title }}</a></li>
@@ -91,43 +88,50 @@
             -->
             {% block categories %}
             <section id="widget-category" class="widget-wrapper widget_archive">
+                {#<div class="widget-title">
+                    Demos and Apps
+                </div>
+                <ul>
+                    <li><a href="https://www.offenedaten.de/map">Who has what open data in Germany?</a></li>
+                    A not-so-common type of search for CKAN which also demonstrates the results of CKAN harvesting
+                    <li><a href="https://demockan.crowdsalad.de/" >What can CKAN?</a></li>
+                    Showcases CKAN with a suite of plugins and datasets for testing
+                    <li><a href="./theme/apps/ckan-explorer" >CKAN Explorer</a></li>
+                    Experiment with a CKAN datastore using SQL queries and plotting tools
+                    <li><a href="https://www.mybiketrip.net/" >MyBikeTrip</a></li>
+                    Tell your city where bike facilities need to be improved
+                </ul>
+                <hr>#}
                 <div class="widget-title">
-                    Category
+                    Blog Sections
                 </div>
                 <ul>
                     {% for category, article in categories%}
                         <li><a href="{{ SITEURL }}/{{ category.url }}" >{{ category.name }} </a></li>
                     {% endfor %}
                 </ul>
-            </section>
-            {% endblock %}
-
-            {% block tagcloud %}
-            <section id="widget-tagcloud" class="widget-wrapper widget_archive">
+                <hr>
                 <div class="widget-title">
-                    Tagcloud
+                    Blog Index
                 </div>
                 <div>
-                    {% for tag, size in tag_cloud %}
-                        <span><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name }}</a></span>
-                    {% endfor %}
+                    <ul class="tagcloud">
+                        {% for tag in tag_cloud %}
+                            <li class="tag-{{ tag.1 }}">
+                                <a href="{{ SITEURL }}/{{ tag.0.url }}">
+                                {{ tag.0 }}
+                                    {% if TAG_CLOUD_BADGE %}
+                                        <span class="badge">{{ tag.2 }}</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </section>
             {% endblock %}
-
-
-            {% block links %}
-            <section id="widget-links" class="widget-wrapper widget_archive">
-                <div class="widget-title">
-                    Links
-                </div>
-                <ul>
-                    {% for name, link in LINKS %}
-                        <li><a href="{{ link }}">{{ name }}</a></li>
-                    {% endfor %}
-                </ul>
-            </section>
-            {% endblock %}
+            
+            
             
         </section><!-- widgets -->
         {% endblock widgets %}
@@ -144,9 +148,9 @@
         </div>
 
         <div class="grid col-300 copyright" >
-            <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
+            {#<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" rel="license">
                 <img src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" style="border-width:0" alt="知识共享许可协议"></img>
-            </a>
+            </a>#}
         </div>
         <div class="grid col-300 ">
 
